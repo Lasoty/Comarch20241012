@@ -1,5 +1,5 @@
 ﻿<Window
-    x:Class="Bibliotekarz.App.MainWindow"
+    x:Class="Bibliotekarz.App.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -15,7 +15,7 @@
                 <MenuItem Header="_Import" />
                 <MenuItem Header="_Export" />
                 <Separator />
-                <MenuItem Header="Zam_knij" />
+                <MenuItem Command="{Binding CloseCommand}" Header="Zam_knij" />
             </MenuItem>
             <MenuItem Header="Edycja">
                 <MenuItem Header="Nowy" />
@@ -34,11 +34,31 @@
         </StatusBar>
 
         <Grid>
-            <DataGrid Margin="0,22,0,0" d:ItemsSource="{d:SampleData ItemCount=5}" />
+            <DataGrid
+                Margin="0,22,0,0"
+                d:ItemsSource="{d:SampleData ItemCount=5}"
+                AutoGenerateColumns="False"
+                IsReadOnly="True"
+                ItemsSource="{Binding Books}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Width="2*"
+                        Binding="{Binding Author}"
+                        Header="Autor" />
+                    <DataGridTextColumn
+                        Width="3*"
+                        Binding="{Binding Title}"
+                        Header="Tytuł" />
+                    <DataGridTextColumn Binding="{Binding PageCount}" Header="Liczba stron" />
+                    <DataGridCheckBoxColumn Binding="{Binding IsBorrowed}" Header="Czy wypożyczona" />
+                    <DataGridTextColumn Binding="{Binding Borrower.FirstName}" Header="Imię wyp." />
+                    <DataGridTextColumn Binding="{Binding Borrower.LastName}" Header="Nazwisko wyp." />
+                </DataGrid.Columns>
+            </DataGrid>
             <TextBox
                 Height="22"
                 VerticalAlignment="Top"
-                Text="TextBox"
+                Text="{Binding FilterText}"
                 TextWrapping="Wrap" />
         </Grid>
 
