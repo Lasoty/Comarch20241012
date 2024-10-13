@@ -1,4 +1,4 @@
-﻿namespace Bibliotekarz.App.Model;
+﻿namespace Bibliotekarz.Services.DTOs;
 
 public record CustomerDto
 {

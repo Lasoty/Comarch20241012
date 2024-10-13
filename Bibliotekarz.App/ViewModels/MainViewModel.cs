@@ -7,7 +7,8 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Bibliotekarz.App.Model;
+using Bibliotekarz.Services;
+using Bibliotekarz.Services.DTOs;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -16,11 +17,11 @@ namespace Bibliotekarz.App.ViewModels;
 [INotifyPropertyChanged]
 public partial class MainViewModel : BaseViewModel
 {
+    BookService bookService = new();
     public MainViewModel()
     {
         FilterText = "Hello world!";
-
-        GenerateFakeData();
+        Books = new ObservableCollection<BookDto>(bookService.GetAllBooks());
     }
 
     public string FilterText { get; set; }
@@ -33,35 +34,5 @@ public partial class MainViewModel : BaseViewModel
     private void CloseApp()
     {
         Environment.Exit(0);
-    }
-
-    private void GenerateFakeData()
-    {
-        Books =
-        [
-            new BookDto
-            {
-                Id = 1,
-                Author = "J.K. Rowling",
-                Title = "Harry Potter and the Philosopher's Stone",
-                PageCount = 223,
-                IsBorrowed = false,
-                Borrower = null
-            },
-            new BookDto
-            {
-                Id = 2,
-                Author = "J.K. Rowling",
-                Title = "Harry Potter and the Chamber of Secrets",
-                PageCount = 251,
-                IsBorrowed = true,
-                Borrower = new CustomerDto
-                {
-                    Id = 1,
-                    FirstName = "John",
-                    LastName = "Doe",
-                }
-            },
-        ];
     }
 }

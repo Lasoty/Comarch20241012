@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bibliotekarz.App", "Bibliot
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bibliotekarz.Data", "Bibliotekarz.Data\Bibliotekarz.Data.csproj", "{16D50E5D-03C0-440E-8227-72EB5E2D744E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bibliotekarz.Services", "Bibliotekarz.Services\Bibliotekarz.Services.csproj", "{F62B95C6-A11F-4B7B-81B1-00AED9EB9816}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{16D50E5D-03C0-440E-8227-72EB5E2D744E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16D50E5D-03C0-440E-8227-72EB5E2D744E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16D50E5D-03C0-440E-8227-72EB5E2D744E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F62B95C6-A11F-4B7B-81B1-00AED9EB9816}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F62B95C6-A11F-4B7B-81B1-00AED9EB9816}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F62B95C6-A11F-4B7B-81B1-00AED9EB9816}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F62B95C6-A11F-4B7B-81B1-00AED9EB9816}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
