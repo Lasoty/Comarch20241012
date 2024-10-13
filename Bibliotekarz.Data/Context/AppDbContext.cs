@@ -42,6 +42,7 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Book>().Property(e => e.Author).HasMaxLength(200).IsRequired();
         modelBuilder.Entity<Book>().Property(e => e.Title).HasColumnType("varchar(250)").IsRequired(false);
         modelBuilder.Entity<Book>().Property(e => e.PageCount).IsRequired().HasDefaultValue(1);
+        modelBuilder.Entity<Book>().Property(e => e.Isbn).IsRequired(false).HasMaxLength(15);
         
         modelBuilder.Entity<Book>().HasOne(e => e.Borrower).WithMany(c => c.Books).HasForeignKey(e => e.BorrowerId).IsRequired(false);
     }

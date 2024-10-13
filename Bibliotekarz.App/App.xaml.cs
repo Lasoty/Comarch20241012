@@ -1,6 +1,6 @@
-﻿using System.Configuration;
-using System.Data;
-using System.Windows;
+﻿using System.Windows;
+using Bibliotekarz.Data.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bibliotekarz.App
 {
@@ -9,6 +9,16 @@ namespace Bibliotekarz.App
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            CheckDataBase();
+        }
+
+        private void CheckDataBase()
+        {
+            using AppDbContext dbContext = new();
+            dbContext.Database.Migrate();
+        }
     }
 
 }

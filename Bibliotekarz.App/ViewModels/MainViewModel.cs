@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Bibliotekarz.App.Views;
 using Bibliotekarz.Services;
 using Bibliotekarz.Services.DTOs;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -21,12 +22,12 @@ public partial class MainViewModel : BaseViewModel
     public MainViewModel()
     {
         FilterText = "Hello world!";
-        Books = new ObservableCollection<BookDto>(bookService.GetAllBooks());
+        GetAllBooks();
     }
 
     public string FilterText { get; set; }
 
-    public ObservableCollection<BookDto> Books { get; set; }
+    public ObservableCollection<BookDto> Books { get; set; } = [];
 
 
     public ICommand CloseCommand => new RelayCommand(CloseApp);
@@ -34,5 +35,25 @@ public partial class MainViewModel : BaseViewModel
     private void CloseApp()
     {
         Environment.Exit(0);
+    }
+
+    public ICommand AddBookCommand => new RelayCommand(AddBook);
+
+    private void AddBook()
+    {
+        BookWindow bookWindow = new();
+        bookWindow.ShowDialog();
+
+        GetAllBooks();
+    }
+
+    private void GetAllBooks()
+    {
+        var books = bookService.GetAllBooks();
+        Books.Clear();
+        foreach (var book in books)
+        {
+            Books.Add(book);
+        }
     }
 }

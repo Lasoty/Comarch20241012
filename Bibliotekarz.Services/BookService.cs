@@ -1,6 +1,7 @@
 ﻿using Bibliotekarz.Data.Context;
 using Bibliotekarz.Data.Model;
 using Bibliotekarz.Services.DTOs;
+using Mapster;
 
 namespace Bibliotekarz.Services;
 
@@ -27,5 +28,16 @@ public class BookService
         }).ToList();
 
 
+    }
+
+    public bool AddBook(BookDto book)
+    {
+        
+        Book bookEntity = book.Adapt<Book>();
+        using AppDbContext dbContext = new();
+        dbContext.Books.Add(bookEntity);
+        dbContext.SaveChanges();
+
+        return true;
     }
 }
